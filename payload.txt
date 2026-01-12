@@ -25,6 +25,7 @@ MOUSE SCROLL -5
 
 REM This is an example of a payload file
 DELAY 1000
+MOUSE MOVE 10 10
 LED ON
 SAY 3
 DELAY 500
