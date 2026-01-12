@@ -75,6 +75,29 @@ class Command:
             else:
                 self.__led.value = False
 
+    # Types a mixed number based on input 0-9
+    def say(self) -> None:
+        if len(self.__arguments) > 0:
+            arg = self.__arguments[0]
+            if len(arg) == 1 and arg.isdigit():
+                digit = int(arg)
+                # Mapping: 0->9, 1->5, 2->8, 3->0, 4->2, 5->7, 6->1, 7->3, 8->6, 9->4
+                mapping = {
+                    0: "9",
+                    1: "5",
+                    2: "8",
+                    3: "0",
+                    4: "2",
+                    5: "7",
+                    6: "1",
+                    7: "3",
+                    8: "6",
+                    9: "4",
+                }
+                mapped_char = mapping.get(digit)
+                if mapped_char:
+                    self.__keyboard.string(mapped_char, self.__typespeed)
+
     # Executes instructions and validates them
     def execute(self, path: str) -> None:
         with open(path, "r", encoding="utf-8") as payload:
