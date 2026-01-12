@@ -139,6 +139,16 @@ class Command:
                 command = self.__arguments.pop(0).lower()
 
                 if hasattr(self, command):
+                    # Strip command from string for the string() method
+                    # This matches the original logic: self.__string = self.__string[len(command) + 1 :]
+                    # But we need to be careful about spaces.
+                    # If we split by space, we can just rejoin or substring.
+                    # Simple substring approach:
+                    if len(self.__string) > len(command) + 1:
+                        self.__string = self.__string[len(command) + 1 :]
+                    else:
+                        self.__string = ""
+
                     try:
                         getattr(self, command)()
                     except Exception as e:
