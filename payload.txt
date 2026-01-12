@@ -1,3 +1,35 @@
+REM Advanced Features Test Payload
+
+REM Define a function to wiggle the mouse
+FUNCTION wiggle
+  MOUSE MOVE 10 10
+  DELAY 100
+  MOUSE MOVE -10 -10
+  DELAY 100
+END_FUNCTION
+
+REM Wait for button on GP15 to start
+WAIT_FOR_BUTTON GP15
+
+REM Loop 5 times
+REPEAT 5
+  LED ON
+  CALL wiggle
+  LED OFF
+  RANDOM_DELAY 200 800
+END_REPEAT
+
+REM Conditional check
+IF_BUTTON GP14
+  SAY 7
+  MOUSE CLICK LEFT
+END_IF
+
+REM Scroll test
+MOUSE SCROLL 5
+DELAY 500
+MOUSE SCROLL -5
+
 REM This is an example of a payload file
 DELAY 1000
 LED ON
