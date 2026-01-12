@@ -1,0 +1,14 @@
+REM Advanced Features Test Payload
+
+FUNCTION func
+  RANDOM 0 50
+  DELAY 500
+END_FUNCTION
+
+REM Loop 5 times
+REPEAT 5
+  LED ON
+  CALL func
+  LED OFF
+  RANDOM_DELAY 200 2500
+END_REPEAT
