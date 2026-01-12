@@ -212,6 +212,19 @@ class Command:
             max_ms = int(self.__arguments[1])
             sleep(random.randint(min_ms, max_ms) / 1000)
 
+    def random(self) -> None:
+        min_val = 0
+        max_val = 9
+
+        if len(self.__arguments) >= 2:
+            min_val = int(self.__arguments[0])
+            max_val = int(self.__arguments[1])
+        elif len(self.__arguments) >= 1:
+            max_val = int(self.__arguments[0])
+
+        val = random.randint(min_val, max_val)
+        self.__keyboard.string(str(val), self.__typespeed)
+
     def _get_pin(self, pin_name: str):
         # Helper to get pin object safely
         import board
